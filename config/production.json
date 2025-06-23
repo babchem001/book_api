@@ -1,0 +1,6 @@
+{
+    "Appname": "BookStore App - Production",
+    "serverUrl": "http://localhost:7000",
+    "PORT": 5000,
+    "jwtSecret": "w3ae4sr5d6tf7y89u0iouyftdrexrcftvgbyhunjimjhugyft"
+}
