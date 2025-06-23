@@ -49,7 +49,7 @@ router.post("/register", async (req, res) => {
     }
 
     // check if username exists on Profile
-    const userNameExists = await prisma.profile.findUnique({
+    const userNameExists = await prisma.profile.findFirst({
       where: {
         username: username,
       },
@@ -68,11 +68,10 @@ router.post("/register", async (req, res) => {
 
     const aUser = await prisma.user.create({
       data: {
-        name: name,
         email: email,
         password: hashedPassword,
-        // isAdmin: false,
-        // username: username,
+        name: name,
+       // isAdmin: false,
       },
     });
 

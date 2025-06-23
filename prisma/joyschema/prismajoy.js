@@ -9,7 +9,7 @@ const userSchema = Joi.object({
     email: Joi.string().email().required(),
     password: Joi.string().min(10).max(30).required(),
     name: Joi.string().min(3).max(100),
-    userName: Joi.string().min(3).max(100),
+    username: Joi.string().min(3).max(100),
     // lastname: Joi.string().min(3).max(100),
     // mobile: Joi.string().min(3).max(20),
     // studentId: Joi.number().min(1).required(),
