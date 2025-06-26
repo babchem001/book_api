@@ -7,7 +7,7 @@ const authProtect = require("../middleware/auth");
 
 router.post("/createbook", authProtect, async (req, res, next) => {
   try {
-    const { title, author, description, genre, price, categoryId } = req.body;
+    const { title, author, description, priceRequest, categoryId } = req.body;
 
     const { sub, isAdmin } = req.user;
     const book = await prisma.book.create({
@@ -15,8 +15,8 @@ router.post("/createbook", authProtect, async (req, res, next) => {
         title: title,
         author: author,
         description: description,
-        genre: genre,
-        price: price,
+        // genre: genre,
+        priceRequest: priceRequest,
         category: {
           connect: {
             id: Number(categoryId),
@@ -43,7 +43,7 @@ router.post("/createbook", authProtect, async (req, res, next) => {
 
 router.put("/update",authProtect, async (req, res) => {
   try {
-    const { title, author, description, genre, price, categoryId, bookId } =
+    const { title, author, description, genre, priceRequest, categoryId, bookId } =
       req.body;
     const { sub, isAdmin } = req.user;
 
@@ -55,9 +55,8 @@ router.put("/update",authProtect, async (req, res) => {
       data: {
         title,
         description,
-        genre,
         author,
-        price: Number(price),
+        priceRequest: Number(priceRequest),
       },
     });
     if (!book) {
@@ -106,7 +105,7 @@ router.get("/singlebook/:id", authProtect, async (req, res) => {
         author: true,
         description: true,
         genre: true,
-        price: true,
+        priceRequest: true,
         category: {
           select: {
             name: true,

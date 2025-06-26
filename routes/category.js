@@ -7,11 +7,10 @@ const prisma = require("../lib/prisma");
 
 router.post("/create", async (req, res, next) => {
   try {
-    const { name, description } = req.body;
+    const { name } = req.body;
     const category = await prisma.category.create({
       data: {
         name: name,
-        description: description,
       },
     });
     return res.status(201).json({

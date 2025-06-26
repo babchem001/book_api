@@ -6,7 +6,7 @@ const router = express.Router();
 const prisma = require("../lib/prisma");
 
 // import Joi
-const userSchema = require("../prisma/joyschema/prismajoy");
+const userSchema = require("../joischema/userSchema");
 
 // Bring in argon2 for password verification
 const argon2 = require("argon2");
@@ -34,7 +34,7 @@ router.post("/login", async (req, res, next) => {
     const userExists = await prisma.user.findUnique({
       where: {
         email: email,
-        // password: password,
+        
       },
     });
 

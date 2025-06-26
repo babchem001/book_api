@@ -1,4 +1,4 @@
-//profile with uploading with multer
+//profile API
 
 const express = require("express");
 const router = express.Router();
@@ -45,6 +45,7 @@ router.post(
       });
       // Access uploaded file information through req.file
       return res.json({ message: "File uploaded successfully" });
+
     } catch (error) {
       next(error);
     }
@@ -62,7 +63,7 @@ router.get("/", authProtect, async (req, res, next) => {
       },
       select: {
         bio: true,
-        username: true,
+        userName: true,
         avatar: true,
         user: {
           select: {
